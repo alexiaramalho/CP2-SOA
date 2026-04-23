@@ -1,9 +1,7 @@
 package br.com.fiap.checkpoint1.model;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.DecimalMin;
-import jakarta.validation.constraints.NotEmpty;
-import jakarta.validation.constraints.Positive;
+import jakarta.validation.constraints.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -17,6 +15,7 @@ import java.time.LocalDate;
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
+@Table(name = "Pedidos")
 public class OrderModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,6 +24,7 @@ public class OrderModel {
     @NotEmpty(message = "Preenchimento do nome é obrigatório")
     private String clientName;
 
+    @NotEmpty(message = "A data do pedido é obrigatória")
     private LocalDate orderDate;
 
     @DecimalMin(value = "0.0", message = "O valor não pode ser negativo")
